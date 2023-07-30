@@ -40,35 +40,35 @@ class FAQPage(BaseDrivers):
         return self.element_to_be_clickable(By.XPATH, self.FAQ1)
 
     def click_faq1(self):
-        # time.sleep(4)
+        time.sleep(2)
         self.faq1().click()
 
     def faq2(self):
         return self.element_to_be_clickable(By.XPATH, self.FAQ2)
 
     def click_faq2(self):
-        # time.sleep(4)
+        time.sleep(2)
         self.faq2().click()
 
     def faq3(self):
         return self.element_to_be_clickable(By.XPATH, self.FAQ3)
 
     def click_faq3(self):
-        # time.sleep(4)
+        time.sleep(2)
         self.faq3().click()
 
     def faq4(self):
         return self.element_to_be_clickable(By.XPATH, self.FAQ4)
 
     def click_faq4(self):
-        # time.sleep(4)
+        time.sleep(2)
         self.faq4().click()
 
     def faq5(self):
         return self.element_to_be_clickable(By.XPATH, self.FAQ5)
 
     def  click_faq5(self):
-        # time.sleep(4)
+        time.sleep(2)
         self.faq5().click()
 
     def faq6(self):
