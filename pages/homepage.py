@@ -34,6 +34,7 @@ class LaunchPage(BaseDrivers):
         return self.element_to_be_clickable(By.XPATH, self.SELECT_BUTTON)
 
     def click_selectbutton(self):
+        time.sleep(2)
         self.get_location().click()
 
     def cheezyaddition(self):
