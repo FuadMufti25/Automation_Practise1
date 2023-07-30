@@ -18,7 +18,7 @@ class Test_Homepage():
         self.lp.select_flavour()
         self.lp.add_quantity()
         self.lp.click_add_cheezy_tikka()
-        self.lp.click_somewhat_local()
+        # self.lp.click_somewhat_local()
         self.lp.click_chicken_tikka()
         self.lp.click_variation_chicken_tikka()
         self.lp.click_flavour_chicken_tikka()
