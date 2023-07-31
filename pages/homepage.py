@@ -1,13 +1,15 @@
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.support.wait import WebDriverWait
 from base.basedrivers import BaseDrivers
+from selenium.webdriver.support import expected_conditions as EC
 
 class LaunchPage(BaseDrivers):
     def __init__(self, driver):
         # super().__init__(driver)
-        # self.wait = wait
-        # super().__init__(driver)
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 30)
+
 
 # locators
     SELECT_BUTTON = "//button[normalize-space()='Select']"
@@ -30,10 +32,43 @@ class LaunchPage(BaseDrivers):
 
 
 # location by current location
+    
+    def select_location(self, location_name):
+        location_dropdown = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//div[@placeholder='Select City / Region']//button[@title='Open']//*[name()='svg']//*[name()='path' and contains(@d,'M7 10l5 5 ')]")))
+        location_dropdown.click()
+        time.sleep(2)
+
+        location_options = self.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//ul[@role='listbox']/li")))
+
+        # Iterate through the options and click on the one that matches the provided location_name
+        for option in location_options:
+            if option.text.strip() == location_name:
+                option.click()
+                break
+        time.sleep(2)
+
+    def select_location2(self, location_name2):
+        location_dropdown2 = self.wait.until(EC.element_to_be_clickable((By.XPATH,  "//div[@placeholder='Select Area / Sub Region']//button[@title='Open']//*[name()='svg']")))
+        location_dropdown2.click()
+        time.sleep(2)
+
+        location_options = self.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//ul[@role='listbox']/li")))
+
+        # Iterate through the options and click on the one that matches the provided location_name
+        for option in location_options:
+            if option.text.strip() == location_name2:
+                option.click()
+                break
+        # # Now, use the Select class to handle the dropdown
+        # location_select2 = Select(location_dropdown2)
+        # location_select2.select_by_visible_text(location_name2)
+        # time.sleep(2)
+
     def get_location(self):
         return self.element_to_be_clickable(By.XPATH, self.SELECT_BUTTON)
 
     def click_selectbutton(self):
+        time.sleep(1)
         self.get_location().click()
 
     def cheezyaddition(self):
@@ -139,25 +174,4 @@ class LaunchPage(BaseDrivers):
     def click_order_as_guest(self):
         time.sleep(2)
         self.order_as_guest().click()
-
-
-   # def select_location(self, location_name):
-    #     location_dropdown = self.wait.until(EC.element_to_be_clickable((By.ID, ":r4:")))
-    #     location_dropdown.click()
-    #     time.sleep(2)
-    #
-    #     # Now, use the Select class to handle the dropdown
-    #     location_select = Select(location_dropdown)
-    #     # location_select.select_by_index(1)
-    #     # location_select.select_by_visible_text(location_name)
-    #     location_select.select_by_value(location_name)
-    #     time.sleep(2)
-    # def select_location2(self, location_name2):
-    #     location_dropdown2 = self.wait.until(EC.element_to_be_clickable((By.XPATH,  "// body / div[3] / div[3] / div[2] / div[1] / div[1] / div[1] / div[3] / div[3] / div[1] / div[1] / div[1] / button[1] / * [1]")))
-    #     location_dropdown2.click()
-    #     time.sleep(2)
-    #
-    #     # Now, use the Select class to handle the dropdown
-    #     location_select2 = Select(location_dropdown2)
-    #     location_select2.select_by_visible_text(location_name2)
-    #     time.sleep(2)
+    

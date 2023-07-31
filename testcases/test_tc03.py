@@ -1,5 +1,4 @@
 import pytest
-
 from pages.homepage import LaunchPage
 from pages.order import OrderPage
 
@@ -13,6 +12,8 @@ class Test_Homepage():
         self.op = OrderPage(self.driver)
 
     def test_tc03(self):
+        self.lp.select_location("Lahore")
+        self.lp.select_location2("Johar Town Phase 1 Block G1")
         self.lp.click_selectbutton()
         self.lp.add_products_cheezyaddition()
         self.lp.select_variation()

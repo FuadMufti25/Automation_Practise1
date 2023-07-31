@@ -12,13 +12,16 @@ class Test_Homepage():
         self.lp = LaunchPage(self.driver)
 
     def test_tc01(self):
+        # self.lp.block_popups()
+        self.lp.select_location("Lahore")
+        self.lp.select_location2("Johar Town Phase 1 Block G1")
         self.lp.click_selectbutton()
         self.lp.add_products_cheezyaddition()
         self.lp.select_variation()
         self.lp.select_flavour()
         self.lp.add_quantity()
         self.lp.click_add_cheezy_tikka()
-        self.lp.click_somewhat_local()
+        # self.lp.click_somewhat_local()
         self.lp.click_chicken_tikka()
         self.lp.click_variation_chicken_tikka()
         self.lp.click_flavour_chicken_tikka()
